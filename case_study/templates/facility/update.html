@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<body>
+<h1 style="text-align: center">Edit Service</h1>
+<div class="d-flex justify-content-md-center">
+    <a href="" class="text-center">Back to facility list</a>
+</div>
+<:if test="${mess!=null}">
+    <h1>${mess}</h1>
+</:if>
+<form action="/facility/update" method="post"  th:object="${facility}">
+    <div class="container d-flex  justify-content-md-center">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="row">
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <input type="hidden" class="form-control" name="name" th:field="*{id}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Facility Name</label>
+                        <input type="text" class="form-control" name="name" th:field="*{name}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Area</label>
+                        <input type="number" class="form-control" name="area" th:field="*{area}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Cost</label>
+                        <input type="number" class="form-control" name="cost" th:field="*{cost}" >
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Max People</label>
+                        <input type="number" class="form-control" name="maxPeople" th:field="*{maxPeople}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label>Rent Type</label>
+                        <select name="rentType" class="form-control" th:field="*{rentType}">
+                            <option th:each="rentType : ${rentTypeList}" th:value="${rentType.id}"
+                                    th:text="${rentType.name}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <div>
+                            <label>Facility Type</label>
+                            <select onchange="show(this.value)" name="facilityType" class="form-control" th:field="*{facilityType}">
+                                <option th:each="facilityType:${facilityTypeList}" th:value="${facilityType.id}"
+                                        th:text="${facilityType.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check" id="1" style="display: none">
+                        <label class="form-label">Standard Room</label>
+                        <input type="text" class="form-control" name="standardRoom" th:field="*{standardRoom}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check" id="2" style="display: none">
+                        <label class="form-label">Description other convenience</label>
+                        <input type="number" class="form-control" name="description" th:field="*{descriptionOtherConvenience}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check" id="3" style="display: none">
+                        <label class="form-label">Pool Area</label>
+                        <input type="number" class="form-control" name="poolArea" th:field="*{poolArea}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check" id="4" style="display: none">
+                        <label class="form-label">Number Of Floors</label>
+                        <input type="number" class="form-control" name="numberOfFloors" th:field="*{numberOfFloors}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check" id="5" style="display: none">
+                        <label class="form-label">Facility Free</label>
+                        <input type="text" class="form-control" name="facilityFree" th:field="*{facilityFree}">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+<script>
+    function show(value) {
+        switch (value) {
+            case "None":
+                document.getElementById("1").style.display = "none";
+                document.getElementById("2").style.display = "none";
+                document.getElementById("3").style.display = "none";
+                document.getElementById("4").style.display = "none";
+                document.getElementById("5").style.display = "none";
+                break;
+            case "1":
+                document.getElementById("1").style.display = "block";
+                document.getElementById("2").style.display = "block";
+                document.getElementById("3").style.display = "block";
+                document.getElementById("4").style.display = "block";
+                document.getElementById("5").style.display = "none";
+                break;
+            case "2":
+                document.getElementById("1").style.display = "block";
+                document.getElementById("2").style.display = "block";
+                document.getElementById("3").style.display = "none";
+                document.getElementById("4").style.display = "block";
+                document.getElementById("5").style.display = "none";
+                break;
+            case "3":
+                document.getElementById("1").style.display = "none";
+                document.getElementById("2").style.display = "none";
+                document.getElementById("3").style.display = "none";
+                document.getElementById("4").style.display = "none";
+                document.getElementById("5").style.display = "block";
+                break;
+        }
+    }
+</script>
+</body>
+<script src="/js/bootstrap.min.js"></script>
+</html>
