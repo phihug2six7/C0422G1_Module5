@@ -1,0 +1,25 @@
+<h2>Calculator Works!</h2>
+<div>
+<div>
+  <label>Number 1</label>
+  <input type="text" [(ngModel)]="num1">
+</div>
+  <div>
+    <label>Number 2</label>
+    <input type="text" [(ngModel)]="num2">
+  </div>
+  <div>
+    <select [(ngModel)]="type">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+  </div>
+  <div>
+    <button (click)="calculatorTotal()">Tính toán`</button>
+  </div>
+  <div>
+    <p>Kết quả: {{result}}</p>
+  </div>
+</div>
