@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+<h1 style="text-align: center">Create Customer</h1>
+
+<div class="d-flex justify-content-md-center">
+    <a href="list.html" class="text-center">Back to customer list</a>
+</div>
+
+<form action="/customer/create" method="post" th:object="${customerDto}">
+    <div class="container d-flex  justify-content-md-center">
+        <div class="row">
+            <div class="col-md-12 ">
+                <div class="row">
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Name
+                            <span style="color: red" th:errors="*{name}"></span>
+                        </label>
+                        <input title="Nhập cho đúng nghe cu!" type="text" class="form-control" id="name" name="name"
+                               th:field="*{name}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Birthday
+                        <span style="color: red" th:errors="*{dateOfBirth}" ></span>
+                        </label>
+                        <input title="Nhập cho đúng nghe cu!" type="date" class="form-control" id="birthday"
+                               name="birthday" th:field="*{dateOfBirth}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Gender</label>
+                        <select title="Chọn cho đúng nghe cu!" name="gender" id="gender" class="form-control"
+                                th:field="*{gender}">
+                            <option value="0">Nữ</option>
+                            <option value="1">Nam</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Id Card</label>
+                        <span style="color: red" th:errors="*{idCard}"></span>
+                        <input title="Nhập cho đúng nghe cu!" type="text" class="form-control" id="idCard" name="idCard"
+                               th:field="*{idCard}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Phone
+                            <span style="color: red" th:errors="*{phoneNumber}"></span>
+                        </label>
+                        <input title="Nhập cho đúng nghe cu!" type="number" class="form-control" id="phone" name="phone"
+                               th:field="*{phoneNumber}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Email</label>
+                        <span style="color: red" th:errors="*{email}"></span>
+                        <input title="Nhập cho đúng nghe cu!" type="email" class="form-control" id="email" name="email"
+                               th:field="*{email}">
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Customer Type Id</label>
+                        <select title="Chọn cho đúng nghe cu!" name="customerTypeId" class="form-control"
+                                th:field="*{customerType.id}">
+                            <option th:each="customerType : ${customerTypeList}" th:value="${customerType.id}"
+                                    th:text="${customerType.name}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3 form-check">
+                        <label class="form-label">Address</label>
+                        <input title="Nhập cho đúng nghe cu!" type="text" class="form-control" id="address"
+                               name="address">
+                    </div>
+
+                    <div class="row d-flex justify-content-center">
+                        <button style="width: 100px" type="submit" class="btn btn-primary">Create</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+<script src="/js/bootstrap.min.js"></script>
+<script>
+    $(function () {
+        $("name").title
+        $("birthday").title
+        $("idCard").title
+        $("phone").title
+        $("email").title
+        $("address").title
+        $("gender").title
+    })
+
+</script>
+</html>
