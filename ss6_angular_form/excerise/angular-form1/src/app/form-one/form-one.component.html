@@ -1,0 +1,84 @@
+<h1 style="text-align: center">Hello world</h1>
+<form [formGroup]="registerFormReactive" (ngSubmit)="registerWithReactive()">
+  <label><b>Email :</b></label> <br>
+  <input type="email" formControlName="email" name="email"> <br>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.email.hasError('required')&& registerFormReactive.controls.email.touched">
+    Email không được để trống
+  </p>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.email.hasError('email')&& registerFormReactive.controls.email.touched">
+    Nhập đúng định dạng của email
+  </p>
+
+  <label><b>Password :</b></label> <br>
+  <input formControlName="password" name="password"> <br>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.password.hasError('required')&& registerFormReactive.controls.password.touched">
+    Password không được để trống
+  </p>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.password.hasError('minlength')&& registerFormReactive.controls.password.touched">
+    Password không được ít hơn 6 ký tự
+  </p>
+
+  <label><b>Confirm Password :</b></label> <br>
+  <input formControlName="confirmPassword" name="confirmPassword"> <br>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.password.hasError('required')&& registerFormReactive.controls.password.touched">
+    Confirm Password không được để trống
+  </p>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.password.hasError('minlength')&& registerFormReactive.controls.password.touched">
+    Confirm Password không được ít hơn 6 ký tự
+  </p>
+
+  <label><b>Country</b></label> <br>
+  <select formControlName="country" name="country">
+    <option>Viet Nam</option>
+    <option>Laos</option>
+    <option>Cuba</option>
+  </select> <br>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.country.hasError('required')&& registerFormReactive.controls.country.touched">
+    Country không được để trống
+  </p>
+
+  <label><b>Age</b></label> <br>
+  <input type="text" formControlName="age" name="age"> <br>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.age.hasError('required')&& registerFormReactive.controls.age.touched">
+    Age không được để trống
+  </p>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.age.hasError('validAge')&& registerFormReactive.controls.age.touched">
+    Age không được nhỏ hơn 18 tuổi
+  </p>
+
+  <label><b>Gender</b></label>
+  <div class="form-check">
+    <input formControlName="gender"  class="form-check-input" type="radio" name="gender1" id="flexRadioDefault1">
+    <label class="form-check-label" for="flexRadioDefault1">
+      Nam
+    </label>
+  </div>
+  <div class="form-check">
+    <input formControlName="gender"  class="form-check-input" type="radio" name="gender1" id="flexRadioDefault2" checked>
+    <label class="form-check-label" for="flexRadioDefault2">
+      Nữ
+    </label>
+  </div>
+
+  <label><b>Phone</b></label> <br>
+  <input type="text" formControlName="phone" name="phone"> <br>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.phone.hasError('required')&& registerFormReactive.controls.phone.touched">
+    Phone không được để trống
+  </p>
+  <p style="color: red;"
+     *ngIf="registerFormReactive.controls.phone.hasError('pattern')&& registerFormReactive.controls.phone.touched">
+    Phone bắt đầu với +84, và theo sau là 9 đến 10 chữ số
+  </p>
+
+  <button type="submit">Hihi</button>
+</form>
