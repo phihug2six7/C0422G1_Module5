@@ -1,0 +1,6 @@
+<table>
+  <tr *ngFor="let udu of world">
+    <td>{{udu.world}}</td>
+    <td><a [routerLink]="['',udu.world]">Dịch</a></td>
+  </tr>
+</table>
