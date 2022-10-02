@@ -9,6 +9,8 @@ import {Product} from "../../model/product";
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  idDelete:number;
+  nameDelete:string;
 
   constructor(private productService: ProductService) { }
 
@@ -16,6 +18,18 @@ export class ProductListComponent implements OnInit {
     this.getAll();
   }
   getAll() {
-    this.products = this.productService.getAll();
+   return this.productService.getAll().subscribe(pro =>{
+     this.products=pro;
+     console.log(this.products);
+   });
+  }
+  getIdNameDelete(id:number,name:string){
+    this.idDelete=id;
+    this.nameDelete=name;
+  }
+  delete(){
+    this.productService.deleteProduct(this.idDelete).subscribe(next=>{
+      this.getAll()
+    });
   }
 }

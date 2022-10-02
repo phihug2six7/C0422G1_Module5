@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "name": "Iphone",
+      "price": 123,
+      "description": "Mới",
+      "category": {
+        "id": 1,
+        "nameCategory": "Điện thoại"
+      },
+      "id": 1
+    },
+    {
+      "name": "Ghế",
+      "price": 123,
+      "description": "Cũ",
+      "category": {
+        "id": 2,
+        "nameCategory": "Đồ dùng"
+      },
+      "id": 2
+    },
+    {
+      "name": "son si ting",
+      "price": 3000,
+      "description": "mau vàng",
+      "category": {
+        "id": 1,
+        "nameCategory": "Điện thoại"
+      },
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "nameCategory": "Điện thoại"
+    },
+    {
+      "id": 2,
+      "nameCategory": "Đồ dùng"
+    }
+  ]
+}
