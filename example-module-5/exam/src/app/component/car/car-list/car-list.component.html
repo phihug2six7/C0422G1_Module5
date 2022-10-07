@@ -1,0 +1,124 @@
+<h3 style="text-align: center">Danh sách các xe đăng ký ở bến xe XYZ</h3>
+<div class="col-md-6 mb-5" style="margin: auto">
+  <table class="table table-light">
+    <thead>
+    <tr class="table-primary">
+      <th>Số Xe</th>
+      <th>Loại Xe</th>
+      <th>Tên Nhà Xe</th>
+      <th>Điểm đi</th>
+      <th>Điểm đến</th>
+      <th>Số điện thoại</th>
+      <th>Email</th>
+      <th>Giờ đi</th>
+      <th>Giờ đến</th>
+      <th>Chỉnh sủa</th>
+      <th>Xóa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let car of cars; index as i">
+      <td>{{car.id}}</td>
+      <td>{{car.loaiXe}}</td>
+      <td>{{car.nhaXe.tenNhaXe}}</td>
+      <td>{{car.diaDiemDi}}</td>
+      <td>{{car.diaDiemDen}}</td>
+      <td>{{car.nhaXe.soDienThoai}}</td>
+      <td>{{car.nhaXe.email}}</td>
+      <td>{{car.gioKhoiHanh}}</td>
+      <td>{{car.gioDen}}</td>
+      <td class="text-center">
+        <button type="button" class="btn btn-outline-light border-0" (click)="getFormEdit(car.id)" data-bs-toggle="modal"
+                data-bs-target="#edit">
+          <span class="fa fa-edit text-warning">Chỉnh sửa</span>
+        </button>
+      </td>
+      <td class="text-center">
+        <button type="button" class="btn btn-outline-light border-0" (click)="getDelete(car.id)" data-bs-toggle="modal"
+                data-bs-target="#deleteCar">
+          <span class="fa fa-trash text-danger">Xóa</span>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="deleteCar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel2">Delete Car</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div *ngIf="deleteCar !== null" class="modal-body">
+        <p>Bạn có đồng ý xóa thông tin của xe khách có số xe :</p>
+        <p> Số xe: {{deleteCar.id}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="fa fa-cancel text-black"></i>
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary" (click)="carDelete()" data-bs-dismiss="modal">
+          <i class="fa fa-trash text-danger"></i>
+          Ok
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="carForm" class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel1">Edit product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="carForm" (ngSubmit)="updateCar()">
+          <div class="form-text mb-4">
+            <label class="form-label" for="id">Id</label>
+            <input type="text" id="id" class="form-control" formControlName="id" name="id"/>
+          </div>
+          <div class="form-text mb-4">
+            <label class="form-label" for="loaiXe1">Loại xe</label>
+            <input type="text" id="loaiXe1" class="form-control" formControlName="loaiXe" name="loaiXe"/>
+          </div>
+          <div class="form-text mb-4">
+            <label class="form-label" for="diaDiemDi1">Địa điểm đi</label>
+            <input type="text" id="diaDiemDi1" class="form-control" formControlName="diaDiemDi" name="diaDiemDi"/>
+          </div>
+          <div class="form-text mb-4">
+            <label class="form-label" for="diaDiemDen1">Địa điểm đến</label>
+            <input type="text" id="diaDiemDen1" class="form-control" formControlName="diaDiemDen" ngModel="car"/>
+          </div>
+          <div class="form-text mb-4">
+            <label class="form-label" for="gioKhoiHanh1">Giờ khởi hành</label>
+            <input type="text" id="gioKhoiHanh1" class="form-control" formControlName="gioKhoiHanh" name="gioKhoiHanh"/>
+          </div>
+          <div class="form-text mb-4">
+            <label class="form-label" for="gioDen1">Giờ đến </label>
+            <input type="text" id="gioDen1" class="form-control" formControlName="gioDen" name="gioDen"/>
+          </div>
+          <div class="form-text mb-4" formGroupName="nhaXe">
+            <label class="form-label" for="ten">Nhà xe</label>
+            <select formControlName="id" id="ten" class="form-select" name="tenNhaXe">
+              <option value="" disabled selected>Chọn Tên Nhà xe </option>
+              <ng-container *ngFor="let ten of homeCarList">
+                <option [ngValue]="ten.id">{{ten.tenNhaXe}}</option>
+              </ng-container>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-cancel text-black"></i>Hủy</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"><i class="fa fa-save text-danger"></i>Chỉnh sủa</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

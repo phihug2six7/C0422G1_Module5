@@ -1,0 +1,38 @@
+{
+  "cars": [
+    {
+      "id": "1235",
+      "loaiXe": "Cầu tuột",
+      "diaDiemDi": "Đà Nẵng",
+      "diaDiemDen": "Hà Nội",
+      "gioKhoiHanh": "9:00",
+      "gioDen": "13:00",
+      "nhaXe": {
+        "id": 3,
+        "tenNhaXe": "Phương Trang",
+        "soDienThoai": "0934567893",
+        "email": "phuongtrang@gmail.com"
+      }
+    }
+  ],
+  "nhaXe": [
+    {
+      "id": 1,
+      "tenNhaXe": "Mai Linh",
+      "soDienThoai": "0901245671",
+      "email": "mailinh@gmail.com"
+    },
+    {
+      "id": 2,
+      "tenNhaXe": "Hoàng Long",
+      "soDienThoai": "0934567894",
+      "email": "hoanglong@gmail.com"
+    },
+    {
+      "id": 3,
+      "tenNhaXe": "Phương Trang",
+      "soDienThoai": "0973567354",
+      "email": "phuongtrang@gmail.com"
+    }
+  ]
+}
